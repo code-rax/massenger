@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f2f2f2;
+        direction: rtl;
+        font-family: tahoma;
+        font-size: 14px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+
+      hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+
+      button {
+        /* تولید شده توسط سایت آموزشی فری لرن */
+        /* https://files.free-learn.ir/tools/gg/gradient-generator.php#BurningOrange */
+        background: #ff416c;
+        background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+        background: linear-gradient(to right, #ff4b2b, #ff416c);
+        /* تولید شده توسط سایت آموزشی فری لرن */
+
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+        border-radius: 40px;
+        margin: 5px 2px;
+      }
+
+      button:hover {
+        opacity: 1;
+      }
+
+      .resetbtn {
+        padding: 14px 20px;
+        background-color: #f44336;
+      }
+
+      .resetbtn,
+      .signupbtn {
+        float: left;
+        width: 48.55555%;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .mybox {
+        max-width: 700px;
+        background-color: #fff;
+        margin: 20px auto;
+        padding: 10px;
+        box-shadow: 2px 5px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .container h2,
+      .container p {
+        text-align: center;
+      }
+
+      @media screen and (max-width: 500px) {
+        .resetbtn,
+        .signupbtn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mybox">
+      <form
+        action="javascript:void(0);"
+        onsubmit="return validateForm();"
+        id="myForm"
+      >
+        <div class="container">
+          <h2>Login</h2>
+          <p>برای ورود به سیستم لطفا اطلاعات زیر را وارد نمایید</p>
+          <hr />
+
+          <label><b>Email</b></label>
+          <input type="email" placeholder="...Email / Gmail" id="User_Email" />
+
+          <label><b>Password</b></label>
+          <input type="password" placeholder="...Password" id="User_Password" />
+
+          <div class="clearfix">
+            <button
+              onclick="window.location.href='signup-localstorage.html'"
+              class="resetbtn"
+            >
+              Singup
+            </button>
+            <button type="submit" class="signupbtn">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        var user_email = document.forms["myForm"]["User_Email"].value;
+        var user_password = document.forms["myForm"]["User_Password"].value;
+        var useremail = localStorage.getItem("USER_EMAIL");
+        var userpassword = localStorage.getItem("USER_PASSWORD");
+
+        if (user_email == "" && user_password == "") {
+          alert("لطفا یه چیزی وارد کن");
+          return false;
+        } else if (user_email != "" && user_password == "") {
+          alert("لطفا رمز را وارد نمایید");
+          return false;
+        } else if (user_email == "" && user_password != "") {
+          alert("لطفا ایمیل را وارد نمایید");
+          return false;
+        } else if (user_email != useremail && user_password != userpassword) {
+          alert("ایمیل و رمز هردو اشتباه می باشند");
+          return false;
+        } else if (user_email != useremail && user_password == userpassword) {
+          alert("رمز درسته ولی ایمیل اشتباه می باشد");
+          return false;
+        } else if (user_email == useremail && user_password != userpassword) {
+          alert("ایمیل درسته ولی رمز اشتباه می باشد");
+          return false;
+        } else if (user_email == useremail && user_password == userpassword) {
+          window.location.href = "../index.html";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,482 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+  user-zoom: initial;
+}
+.container {
+  height: 100vh;
+  display: flex;
+}
+.chat {
+  flex: 40%;
+  transition: 0.3s;
+  overflow-y: scroll;
+}
+.chat.active {
+  opacity: 0;
+  transition: 0;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+}
+.header .menu {
+  width: 35px;
+  margin: 5px;
+  box-sizing: content-box;
+  transition: 0.3s;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.header .menu:hover {
+  background-color: rgba(182, 179, 179, 0.216);
+  width: 35px;
+  margin: 10px;
+}
+.header .menu div {
+  height: 2px;
+  margin: 4px;
+  border-radius: 10px;
+  background-color: rgba(99, 93, 93, 0.358);
+  transition: 0.3s;
+}
+.header .menu .item1.active {
+  transform: translate(0, 6px) rotate(45deg);
+  background-color: rgb(179, 9, 9);
+}
+.header .menu .item2.active {
+  transform: translate(-8px, 0);
+  background-color: transparent;
+}
+.header .menu .item3.active {
+  transform: translate(0, -6px) rotate(-45deg);
+  background-color: rgb(179, 9, 9);
+}
+.header input {
+  width: 70%;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  outline: 0;
+  font-size: 16px;
+  padding: 20px;
+  transition: 0.2s;
+  border-radius: 15px;
+  margin: 5px;
+  color: rgba(0, 0, 0, 0.668);
+}
+.toolsItem {
+  padding: 10px;
+  position: absolute;
+  left: 35px;
+  z-index: 1;
+  display: none;
+  transition: 0.3s;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  display: none;
+}
+.toolsItem ul li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.toolsItem ul li:hover {
+  background-color: rgba(182, 179, 179, 0.202);
+}
+ul li p,
+i {
+  padding: 5px;
+}
+.toolsItem div {
+  margin: 5px;
+}
+.toolsItem.active {
+  display: flex;
+}
+.chatPart {
+  width: 100%;
+  position: relative;
+  padding: 8px;
+}
+.chat1 {
+  display: flex;
+  color: rgba(0, 0, 0, 0.779);
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 5px;
+}
+.chat1:hover {
+  background-color: rgba(128, 128, 128, 0.132);
+}
+.chat1 p {
+  font-size: 12px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: rgba(110, 98, 98, 0.789);
+}
+.chat1 span {
+  padding: 8px;
+  font-weight: bold;
+}
+.chat1 img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.chatIteml {
+  padding: 10px;
+  position: absolute;
+  left: 215px;
+  bottom: 75px;
+  z-index: 1;
+  opacity: 0;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  line-height: 35px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  display: none;
+}
+.chatIteml ul li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.chatIteml ul li:hover {
+  background-color: rgba(182, 179, 179, 0.202);
+}
+.chatIteml.active {
+  opacity: 100%;
+  display: flex;
+}
+.startChat {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 179, 255, 0.81);
+  position: absolute;
+  left: 320px;
+  bottom: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  transition: 0.3s;
+}
+.startChat.active {
+  background-color: rgba(240, 80, 69, 0.81);
+}
+.account {
+  width: 40%;
+  height: 100vh;
+  background-color: rgba(70, 70, 70, 0.039);
+  overflow-y: scroll;
+  position: absolute;
+  left: -40%;
+  transition: 0.3s;
+}
+.account.active {
+  left: 0;
+}
+.EditAccount {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+.EditAccount span {
+  position: absolute;
+  left: 20%;
+  color: rgba(0, 0, 0, 0.853);
+  font-weight: bold;
+  font-size: 18px;
+}
+#i-pen1 {
+  position: absolute;
+  left: 5%;
+  color: rgba(0, 0, 0, 0.562);
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 50%;
+  padding: 10px;
+}
+#i-pen1:hover {
+  background-color: rgba(182, 179, 179, 0.551);
+}
+#i-pen2 {
+  position: absolute;
+  right: 20%;
+  color: rgba(0, 0, 0, 0.562);
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 50%;
+  padding: 10px;
+}
+#i-pen2:hover {
+  background-color: rgba(182, 179, 179, 0.551);
+}
+.Profile img {
+  width: 100%;
+  height: 250px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.Profile img:hover {
+  padding: 10px;
+}
+.ChangeProfile {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(5, 164, 164);
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.562);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  top: 265px;
+}
+.ChangeProfile:hover {
+  background-color: rgb(119, 123, 123);
+}
+.yourInformation div {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  font-size: 18px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.yourInformation div:hover {
+  background-color: rgba(89, 92, 92, 0.1);
+}
+.yourInformation div i {
+  position: absolute;
+  left: 20px;
+  color: rgba(0, 0, 0, 0.562);
+}
+.yourInformation div span {
+  position: absolute;
+  left: 80px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.871);
+}
+.yourInformation div b {
+  position: absolute;
+  left: 270px;
+  color: rgba(61, 59, 59, 0.37);
+  font-weight: lighter;
+}
+.display {
+  flex: 60%;
+  background-image: url(img/users/bg-light.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.sectionProfile {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid rgba(151, 142, 142, 0.404);
+  display: none;
+}
+.sectionProfile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 0.2s;
+  margin-left: 30px;
+  cursor: pointer;
+}
+.sectionProfile img:hover {
+  padding: 2px;
+}
+.sectionProfile span {
+  padding-left: 30px;
+  color: rgba(32, 31, 31, 0.796);
+}
+#i-pen3 {
+  position: absolute;
+  right: 10px;
+  color: rgba(0, 0, 0, 0.562);
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 50%;
+  padding: 10px;
+}
+#i-pen3:hover {
+  background-color: rgba(182, 179, 179, 0.551);
+}
+#backIcone {
+  position: absolute;
+  left: 10px;
+  color: rgba(0, 0, 0, 0.562);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#backIcone:hover {
+  background-color: rgba(182, 179, 179, 0.551);
+}
+#searchIcone {
+  position: absolute;
+  right: 80px;
+  color: rgba(0, 0, 0, 0.562);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#searchIcone:hover {
+  background-color: rgba(182, 179, 179, 0.551);
+}
+.moreIteml {
+  padding: 5px;
+  position: absolute;
+  right: 25px;
+  display: none;
+  transition: 0.3s;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  line-height: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  display: none;
+}
+.moreIteml span:hover {
+  background-color: rgba(182, 179, 179, 0.202);
+}
+.moreIteml span,
+i {
+  display: flex;
+  padding: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.sectionProfile input {
+  border: 1px solid rgba(123, 123, 243, 0.81);
+  outline: 0;
+  width: 150px;
+  height: 25px;
+  color: rgba(73, 70, 70, 0.81);
+  margin-left: 80px;
+  border-radius: 5px;
+  display: none;
+}
+.sectionType {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  display: none;
+}
+.conimoji {
+  justify-content: end;
+  margin: 0 0 10px 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(0, 179, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 253, 253);
+  transition: 0.3s;
+  font-size: 18px;
+}
+.conimoji:hover {
+  background-color: rgb(0, 144, 206);
+}
+#i-file-lines {
+  position: absolute;
+  right: 71px;
+  bottom: 16px;
+  color: rgba(242, 57, 57, 0.806);
+  transition: 0.3s;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+#i-file-lines:hover {
+  color: rgba(197, 2, 2, 0.806);
+}
+.sectionType input {
+  transition: 0.3s;
+  width: 80%;
+  height: 40px;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  justify-content: start;
+  margin: 0 0 10px 10px;
+  padding: 15px;
+  font-size: 16px;
+  color: rgba(89, 88, 90, 0.995);
+}
+.voice {
+  justify-content: end;
+  margin: 0 10px 10px 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(0, 179, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+.voice:hover {
+  background-color: rgb(0, 144, 206);
+}
