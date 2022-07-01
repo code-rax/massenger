@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Arima:wght@200&family=Oxygen:wght@700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -141,6 +143,7 @@ i {
 .chat1 span {
   padding: 8px;
   font-weight: bold;
+  font-family: "Arima", sans-serif;
 }
 .chat1 img {
   width: 50px;
